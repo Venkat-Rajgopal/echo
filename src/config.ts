@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://venkat-rajgopal.github.io/echo",
   author: "Venkatramani Rajgopal",
   // profile: "https://satnaing.dev/",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  desc: "A minimal Blog page.",
   title: "Echos 📣",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
