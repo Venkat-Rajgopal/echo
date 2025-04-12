@@ -1,7 +1,7 @@
 export const SITE = {
   website: "https://venkat-rajgopal.github.io/echo",
   author: "Venkatramani Rajgopal",
-  // profile: "https://satnaing.dev/",
+  profile: "https://satnaing.dev/",
   desc: "A minimal Blog page.",
   title: "Echos 📣",
   ogImage: "astropaper-og.jpg",
