@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://venkat-rajgopal.github.io/echo",
+  website: "https://venkat-rajgopal.github.io",
   author: "Venkatramani Rajgopal",
   profile: "https://satnaing.dev/",
   desc: "A minimal Blog page.",
