@@ -1,6 +1,6 @@
 ---
 author: Venkatramani Rajgopal
-pubDatetime: 2025-04-12T21:41:00Z
+pubDatetime: 2024-04-12T21:41:00Z
 title: Managing internal Python packages
   with Poetry
 slug: managing-packages-with-poetry
@@ -9,42 +9,31 @@ draft: false
 tags:
   - python 🍛
 description:
-  Looking at the multiple ways of setting up a `venv` in Python
-  and how to use them effectively.
+  Efficiently hosting py projects across an organisation
 ---
 
-This XKCD artwork is quite well know now.
-![Python Environments](@/assets/blog_resources/python_environment.png)
+Before we dive into managing Py-projects with Poetry, here's a quick list of options to first manage the environment. These include using Python's built-in `venv` module or Conda for creating and managing virtual environments. Once your environment is set up, you can seamlessly transition to using Poetry for package management and project dependencies. 
 
-However, if you set up things right, its not a mess at all rather a charm to work with.
-We will see how easy is it with setting up environments.
+If this is already know just [jump to Poetry below](#poetry). 
 
-We look at the following methods.
-
+---
 ## Table of contents
+
+The following methods are well know now. 
+
+Managaing Python envirnments are hard. This XKCD artwork is quite well know now. ![Python Environments](@/assets/blog_resources/python_environment.png)
+
+
+
 
 ## Python Virtual Environments with `venv`
 
-Installing a specific python version using `venv`
-
-```shell
-sudo apt install python3.8-venv    
-```
-
-Create a virtual environment with `venv`.
-
-```shell
-python3 -m venv <envname>
-```
-
-Activate and deactivate the environment.
-
-```shell
-source <venv>/bin/acivate
-
-# to deactivate
-deactivate
-```
+| Action                              | Command                              |
+|-------------------------------------|--------------------------------------|
+| Install a specific Python version   | `sudo apt install python3.8-venv`   |
+| Create a virtual environment        | `python3 -m venv <envname>`         |
+| Activate the virtual environment    | `source <venv>/bin/activate`        |
+| Deactivate the virtual environment  | `deactivate`                        |
 
 ## Conda
 
@@ -60,14 +49,14 @@ bash Miniconda3-<version>.sh
 rm Miniconda3-<version>.sh
 ```
 
-| Command                                      | Description                                                                                                                                                                        |
-|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Command                                      | Description |
+| -------------|------------------|
 | `conda update conda`                         | update conda                                                                                                                                                                       |
 | `conda create --name <env name>`             | creating new environments                                                                                                                                                          |
 | `conda activate <env name>`                  | activate environment                                                                                                                                                               |
 | `conda install <package name>`               | adding packages to conda                                                                                                                                                           |
 | `conda create --name condaenv python=3.8.10` | Install env with different python version                                                                                                                                          |
-| `conda env create -f environments.yml`       | adding packages form environments `yaml` <br/> described [here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually) |
+| `conda env create -f environments.yml`       | adding packages form environments `yaml` |
 | `conda env update --file environments.yml`   | update environments based on `yaml`                                                                                                                                                |
 | `conda env remove --name <env name>`         | remove environment                                                                                                                                                                 |
 | `conda list`                                 | list all packages in the environment                                                                                                                                               |
@@ -82,7 +71,7 @@ For all commands refer [conda cheat sheet](https://docs.conda.io/projects/conda/
 
 ## Poetry
 
-This one is my personal favourite just because of its simplicity and how effective it is.
+With its `pyproject.toml` file, it makes little cleaner to manage projects. 
 ![Poetry](@/assets/blog_resources/poetry_isin.png)
 
 Install poetry with `curl`.
@@ -108,7 +97,7 @@ Once initialised, install or update if already installed.
 ```shell
 poetry install
 
-# in case of an update
+# to update all dependencies
 poetry update
 ```
 
@@ -118,20 +107,54 @@ Adding packages to your project? Just do
 poetry add <package name>
 ```
 
-Want to build the package as wheel?
+🚀 Want to build the package as wheel?
 
 ```shell
 poetry build
 ```
 
-and you are good to go.
 
-### Pro Tip
+### Managing builds with AWS CodeArtifact
+`AWS Codeartifact` lets you host codebases across different projects. We can let Poetry know, to source the project not from PyPi 
+but from CodeArtifact. 
+
+First the CodeArtifact Url in poetry. For eg if the repository is called CODEBASE, we set the url as below. The repo URL you will get once the repo is set up in CodeArtifact
+
+```shell
+poetry config repositories.CODEBASE <URL>
+```
+
+Authenticate the `CODEBASE` url in Poetry as; 
+
+```shell
+poetry config http-basic.CODEBASE aws $(aws codeartifact get-authorization-token --domain <FOO> --domain-owner <BAR> --query authorizationToken --output text)
+```
+
+### Using Project with other depending projects
+Once the project is on CodeArtifact, one can simply do `pip install` to install to a project. You have to set up the pip index such that it looks in CodeArtifact first before looking outside for dependencies. Something similar has to be done with Poetry. 
+
+
+For example in the other project `toml` you would add the package as dependency and a source block as below. 
+
+```yaml
+[tool.poetry.dependencies]
+MYPACKAGE = { version = "0.0.1", source = "CODEBASE" }
+
+[[[tool.poetry.source]]]
+name = "CODEBASE"
+url = "CODEARTIFACT_URL"
+priority = "primary"
+```
+
+Before running `poetry install`, you have to pass the token using the `poetry config` command as above. 
+
+💫 With this you can seemlessly host projects within the organisation. 
+
+### Some practical tips
 
 1. *Do not install* from `pip`. Always use the `curl` method as above.
 2. Poetry installs envs in your `.cache/` directory. This below command will install in your working directory if that's
    the way you work.
-
-```shell
-poetry config virtualenvs.in-project true
-```
+  ```shell
+  poetry config virtualenvs.in-project true
+  ```

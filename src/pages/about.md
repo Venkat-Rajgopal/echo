@@ -1,36 +1,25 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "Namaste!"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+🙏
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+I am a Full Stack Data Scientist developing IOT based solutions for [Zeppelin](https://www.zeppelin.com/de-en/powersystems/) in Hamburg, Germany. I grew up in Mumbai, India where i had completed my undergrad in Statistics.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+I graduated in "Applied Mathematics" where in my master thesis *"Deep learning based classification of liquids using ultrasound sensor system data"* i worked on applying Deep Learning methods to classify liquid patterns. I continued my work with Ultrasound Signals and Brain pattern recognition @ [Sonovum - Leipzig](https://www.sonovum.de/). 
 
-<div>
-  <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+Discovering new places on the bike and hiking has been a nice get away. 
+
+<img src="/assets/woods.JPG" width="40%" hspace="20" align="right">
+
+<!-- <img src="/assets/images/boulder.PNG" width="30%" hspace="20" align="left"> -->
+
+This [page](https://venkat-rajgopal.github.io) is build using AstroPaper, a minimal, responsive and SEO-friendly Astro blog theme.
+
+
+Thw whole idea of this blog is to self document \_ for my own personal record keeping and learning. 
 
 ## Tech Stack
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
-
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+I try to mix topics around: Machine Learning, Coding, Cloud computing.
