@@ -33,7 +33,7 @@ export default defineConfig({
     experimentalLayout: "responsive",
   },
   experimental: {
-    svg: true,
+    // svg: true,
     responsiveImages: true,
     preserveScriptOrder: true,
   },

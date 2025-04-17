@@ -49,22 +49,22 @@ bash Miniconda3-<version>.sh
 rm Miniconda3-<version>.sh
 ```
 
-| Command                                      | Description |
-| -------------|------------------|
-| `conda update conda`                         | update conda                                                                                                                                                                       |
-| `conda create --name <env name>`             | creating new environments                                                                                                                                                          |
-| `conda activate <env name>`                  | activate environment                                                                                                                                                               |
-| `conda install <package name>`               | adding packages to conda                                                                                                                                                           |
-| `conda create --name condaenv python=3.8.10` | Install env with different python version                                                                                                                                          |
-| `conda env create -f environments.yml`       | adding packages form environments `yaml` |
-| `conda env update --file environments.yml`   | update environments based on `yaml`                                                                                                                                                |
-| `conda env remove --name <env name>`         | remove environment                                                                                                                                                                 |
-| `conda list`                                 | list all packages in the environment                                                                                                                                               |
-| `conda list --export > requirements.txt`     | export all packages to a txt                                                                                                                                                       |
-| `conda env export > environment.yml`         | export all packages to a yml file                                                                                                                                                  |
-| `conda env remove -n <env name>`             | remove environment                                                                                                                                                                 |
-| `conda search <package name>`                | search for a package                                                                                                                                                               |
-| `conda update --all`                         | update all packages                                                                                                                                                                |
+| Command                                      | Description                               |
+|----------------------------------------------|-------------------------------------------|
+| `conda update conda`                         | update conda                              |
+| `conda create --name <env name>`             | creating new environments                 |
+| `conda activate <env name>`                  | activate environment                      |
+| `conda install <package name>`               | adding packages to conda                  |
+| `conda create --name condaenv python=3.8.10` | Install env with different python version |
+| `conda env create -f environments.yml`       | adding packages form environments `yaml`  |
+| `conda env update --file environments.yml`   | update environments based on `yaml`       |
+| `conda env remove --name <env name>`         | remove environment                        |
+| `conda list`                                 | list all packages in the environment      |
+| `conda list --export > requirements.txt`     | export all packages to a txt              |
+| `conda env export > environment.yml`         | export all packages to a yml file         |
+| `conda env remove -n <env name>`             | remove environment                        |
+| `conda search <package name>`                | search for a package                      |
+| `conda update --all`                         | update all packages                       |
 
 
 For all commands refer [conda cheat sheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
@@ -146,7 +146,17 @@ url = "CODEARTIFACT_URL"
 priority = "primary"
 ```
 
-Before running `poetry install`, you have to pass the token using the `poetry config` command as above. 
+Before running `poetry install`, you have to pass the token using the `poetry config` command as above. CodeArtifact 
+tokens are temporary, so any person or CI system who installs dependencies this way will need to have an 
+active token and have set up the correct environment variables. 
+
+### Using Tokens with Container images
+To build images with private package dependencies like this one, you can pass the CodeArtifact token as a build 
+argument like this;. In the container of course you need to specify the token is an environment variable like `ARG CODEARTIFACT_TOKEN`. 
+
+```shell
+docker build -t my-application --build-arg CODEARTIFACT_TOKEN .
+```
 
 💫 With this you can seemlessly host projects within the organisation. 
 
