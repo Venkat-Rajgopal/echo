@@ -22,13 +22,13 @@ So let's directly dive into it. Here is what we cover.
 ---
 ## Table of contents
 - [Introduction](#introduction)
-	- [Table of contents](#table-of-contents)
-	- [Adaptive Learning](#adaptive-learning)
-	- [ADAM](#adam)
-	- [R-Adam](#r-adam)
-	- [Training CIFAR-10 with R-Adam vs Adam](#training-cifar-10-with-r-adam-vs-adam)
-	- [Results](#results)
-	- [Sources](#sources)
+  - [Table of contents](#table-of-contents)
+  - [Adaptive Learning](#adaptive-learning)
+  - [ADAM](#adam)
+  - [R-Adam](#r-adam)
+  - [Training CIFAR-10 with R-Adam vs Adam](#training-cifar-10-with-r-adam-vs-adam)
+  - [Results](#results)
+  - [Sources](#sources)
 
 ## Adaptive Learning
 We know the problem of setting different learning rates during training with SGD. Choosing the learning rate turns out to be a difficult hyper-parameter to set during training a network. The learning rate also significantly effects the model performance. SGD with momentum algorithm in a way address this problem, but it only comes with the cost of adding another hyperparameter. It thus made sense to use a separate learning rate for each parameter and automatically adapt it during the training phase. This led to the development of algorithms with the so called _adaptive learning rates_. 
@@ -52,7 +52,7 @@ The algorithm is summarised below.
 
 <figure>
   <img
-    src="../src/assets/blog_resources/rectified-adam_files/adam_algo.png"
+    src="/src/assets/blog_resources/rectified-adam_files/adam_algo.png"
     alt="adam"
   />
     <figcaption class="text-center">
@@ -76,7 +76,7 @@ Below is the changes to Adam known as R-Adam.
 
 <figure>
   <img
-    src="../src/assets/blog_resources/rectified-adam_files/radam_algo.png"
+    src="/src/assets/blog_resources/rectified-adam_files/radam_algo.png"
     alt="radam"
   />
     <figcaption class="text-center">
@@ -131,7 +131,7 @@ As we see, the training progress with R-Adam is a lot stable as compared to Adam
 
 <figure>
   <img
-    src="../src/assets/blog_resources/rectified-adam_files/adam.png"
+    src="/src/assets/blog_resources/rectified-adam_files/adam.png"
     alt="radam"
   />
     <figcaption class="text-center">
@@ -144,7 +144,7 @@ We however see a a lower accuracy with R-Adam as compared to Adam, with all othe
 
 <figure>
   <img
-    src="../src/assets/blog_resources/rectified-adam_files/radam.png"
+    src="/src/assets/blog_resources/rectified-adam_files/radam.png"
     alt="radam"
   />
     <figcaption class="text-center">
