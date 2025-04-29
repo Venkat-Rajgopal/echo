@@ -76,7 +76,7 @@ Below is the changes to Adam known as R-Adam.
 
 <figure>
   <img
-    src="/src/assets/blog_resources/rectified-adam_files/radam_algo.png"
+    src="https://venkat-rajgopal.github.io/assets/blog_resources/rectified-adam_files/radam_algo.png"
     alt="radam"
   />
     <figcaption class="text-center">
