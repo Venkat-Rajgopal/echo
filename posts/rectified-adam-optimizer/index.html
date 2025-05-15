@@ -110,12 +110,8 @@ These can be studied as a family of three algorithms which are simple modificati
 <p><strong>First:</strong> Add momentum to RMSprop, which means adding momentum to rescaled gradients. It does this by computing the moments. The algorithm calculates an exponential moving average of the gradient and the squared gradient. The two parameters <em>rho1</em> and <em>rho2</em> control the <em>decay rates</em> of these moving averages.</p>
 <p><strong>Second:</strong> It was observed that the moment estimnates are biased towards 0, especially when the decay rates are small (or close to 1). These biases are corrected by computing the first and second moment estimates.</p>
 <p>The algorithm is summarised below.</p>
-<figure>
-  <img src="/src/assets/blog_resources/rectified-adam_files/adam_algo.png" alt="adam">
-    <figcaption class="text-center">
-    Figure 1: Adam Algorithm
-  </figcaption>
-</figure>
+<p><img src="/src/assets/blog_resources/rectified-adam_files/adam_algo.png" alt="Figure 1: Adam Algorithm"><br>
+<em>Figure 1: Adam Algorithm - A summary of the steps involved in the Adam optimization technique.</em></p>
 <h2 id="r-adam">R-Adam</h2>
 <p>Adaptive learning has so far been very successful in benchmark datasets like CIFAR-10. However it comes with the pitfall of <em>larger variance</em> in the early stage of training.
 The authors of R-Adam suggests a <strong>warmup heuristic</strong> to tackle tis problem and works as a <strong>variance reduction technique</strong>.</p>
@@ -126,12 +122,8 @@ The authors of R-Adam suggests a <strong>warmup heuristic</strong> to tackle tis
 <li>During training, look for stabilization in variance, and increase learning rate and update paremeters using adaptive momentum.</li>
 </ul>
 <p>Below is the changes to Adam known as R-Adam.</p>
-<figure>
-  <img src="https://venkat-rajgopal.github.io/assets/blog_resources/rectified-adam_files/radam_algo.png" alt="radam">
-    <figcaption class="text-center">
-    Figure 2: R Adam Algorithm
-  </figcaption>
-</figure>
+<p><img src="/src/assets/blog_resources/rectified-adam_files/radam_algo.png" alt="Figure 2: Adam Algorithm"><br>
+<em>Figure 2: R Adam Algorithm - A summary of the steps involved in the R Adam technique.</em></p>
 <h2 id="training-cifar-10-with-r-adam-vs-adam">Training CIFAR-10 with R-Adam vs Adam</h2>
 <p>I trained a CIFAR-10 from scratch to look for the change in performance. The network is a 3 layer CNN with Relu as activations. I use the below optimizer setting.</p>
 <pre class="astro-code astro-code-themes min-light night-owl" style="background-color:#ffffff;--shiki-dark-bg:#011627;color:#24292eff;--shiki-dark:#d6deeb; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C2C3C5;font-style:inherit;--shiki-dark:#637777;--shiki-dark-font-style:italic"># use optimizer based on input argument</span></span>
@@ -165,19 +157,11 @@ The authors of R-Adam suggests a <strong>warmup heuristic</strong> to tackle tis
 <span class="line"><span style="color:#D32F2F;font-style:inherit;--shiki-dark:#C792EA;--shiki-dark-font-style:italic">	return</span><span style="color:#24292EFF;--shiki-dark:#D6DEEB"> model</span></span></code></pre>
 <h2 id="results">Results</h2>
 <p>As we see, the training progress with R-Adam is a lot stable as compared to Adam.</p>
-<figure>
-  <img src="/src/assets/blog_resources/rectified-adam_files/adam.png" alt="radam">
-    <figcaption class="text-center">
-    Figure 3: Training with Adam Algorithm
-  </figcaption>
-</figure>
+<p><img src="/src/assets/blog_resources/rectified-adam_files/adam.png" alt="Figure 3: Adam Algorithm"><br>
+<em>Figure 3: Training with Adam Algorithm.</em></p>
 <p>We however see a a lower accuracy with R-Adam as compared to Adam, with all other parameter setting remaining constant.</p>
-<figure>
-  <img src="/src/assets/blog_resources/rectified-adam_files/radam.png" alt="radam">
-    <figcaption class="text-center">
-    Figure 4: Training with RAdam Algorithm
-  </figcaption>
-</figure>
+<p><img src="/src/assets/blog_resources/rectified-adam_files/radam.png" alt="Figure 4: Adam Algorithm"><br>
+<em>Figure 4: Training with R-Adam Algorithm.</em></p>
 <p>Project code are <a href="https://github.com/Venkat-Rajgopal/Blog-post-codes/tree/master/">here</a>.</p>
 <hr>
 <h2 id="sources">Sources</h2>
