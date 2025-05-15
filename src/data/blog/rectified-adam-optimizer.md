@@ -22,13 +22,13 @@ So let's directly dive into it. Here is what we cover.
 ---
 ## Table of contents
 - [Introduction](#introduction)
-  - [Table of contents](#table-of-contents)
-  - [Adaptive Learning](#adaptive-learning)
-  - [ADAM](#adam)
-  - [R-Adam](#r-adam)
-  - [Training CIFAR-10 with R-Adam vs Adam](#training-cifar-10-with-r-adam-vs-adam)
-  - [Results](#results)
-  - [Sources](#sources)
+	- [Table of contents](#table-of-contents)
+	- [Adaptive Learning](#adaptive-learning)
+	- [ADAM](#adam)
+	- [R-Adam](#r-adam)
+	- [Training CIFAR-10 with R-Adam vs Adam](#training-cifar-10-with-r-adam-vs-adam)
+	- [Results](#results)
+	- [Sources](#sources)
 
 ## Adaptive Learning
 We know the problem of setting different learning rates during training with SGD. Choosing the learning rate turns out to be a difficult hyper-parameter to set during training a network. The learning rate also significantly effects the model performance. SGD with momentum algorithm in a way address this problem, but it only comes with the cost of adding another hyperparameter. It thus made sense to use a separate learning rate for each parameter and automatically adapt it during the training phase. This led to the development of algorithms with the so called _adaptive learning rates_. 
@@ -50,7 +50,7 @@ Recall that,
 
 The algorithm is summarised below. 
 
-![Figure 1: Adam Algorithm](/src/assets/blog_resources/rectified-adam_files/adam_algo.png)  
+![Figure 1: Adam Algorithm](/@assets/blog_resources/rectified-adam_files/adam_algo.png)  
 *Figure 1: Adam Algorithm - A summary of the steps involved in the Adam optimization technique.*
 
 
@@ -66,7 +66,7 @@ The authors suggest the following to rectify this.
 
 Below is the changes to Adam known as R-Adam. 
 
-![Figure 2: Adam Algorithm](/src/assets/blog_resources/rectified-adam_files/radam_algo.png)  
+![Figure 2: Adam Algorithm](/@assets/blog_resources/rectified-adam_files/radam_algo.png)  
 *Figure 2: R Adam Algorithm - A summary of the steps involved in the R Adam technique.*
 
 ## Training CIFAR-10 with R-Adam vs Adam
