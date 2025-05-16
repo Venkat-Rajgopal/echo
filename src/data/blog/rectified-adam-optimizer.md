@@ -22,13 +22,13 @@ So let's directly dive into it. Here is what we cover.
 ---
 ## Table of contents
 - [Introduction](#introduction)
-  - [Table of contents](#table-of-contents)
-  - [Adaptive Learning](#adaptive-learning)
-  - [ADAM](#adam)
-  - [R-Adam](#r-adam)
-  - [Training CIFAR-10 with R-Adam vs Adam](#training-cifar-10-with-r-adam-vs-adam)
-  - [Results](#results)
-  - [Sources](#sources)
+	- [Table of contents](#table-of-contents)
+	- [Adaptive Learning](#adaptive-learning)
+	- [ADAM](#adam)
+	- [R-Adam](#r-adam)
+	- [Training CIFAR-10 with R-Adam vs Adam](#training-cifar-10-with-r-adam-vs-adam)
+	- [Results](#results)
+	- [Sources](#sources)
 
 ## Adaptive Learning
 We know the problem of setting different learning rates during training with SGD. Choosing the learning rate turns out to be a difficult hyper-parameter to set during training a network. The learning rate also significantly effects the model performance. SGD with momentum algorithm in a way address this problem, but it only comes with the cost of adding another hyperparameter. It thus made sense to use a separate learning rate for each parameter and automatically adapt it during the training phase. This led to the development of algorithms with the so called _adaptive learning rates_. 
@@ -50,16 +50,8 @@ Recall that,
 
 The algorithm is summarised below. 
 
-<figure>
-  <img
-    src="/src/assets/blog_resources/rectified-adam_files/adam_algo.png"
-    alt="adam"
-  />
-    <figcaption class="text-center">
-    Figure 1: Adam Algorithm
-  </figcaption>
-
-</figure>
+![Figure 1: Adam Algorithm](/@assets/blog_resources/rectified-adam_files/adam_algo.png)  
+*Figure 1: Adam Algorithm - A summary of the steps involved in the Adam optimization technique.*
 
 
 ## R-Adam
@@ -74,16 +66,8 @@ The authors suggest the following to rectify this.
 
 Below is the changes to Adam known as R-Adam. 
 
-<figure>
-  <img
-    src="https://venkat-rajgopal.github.io/assets/blog_resources/rectified-adam_files/radam_algo.png"
-    alt="radam"
-  />
-    <figcaption class="text-center">
-    Figure 2: R Adam Algorithm
-  </figcaption>
-
-</figure>
+![Figure 2: Adam Algorithm](/@assets/blog_resources/rectified-adam_files/radam_algo.png)  
+*Figure 2: R Adam Algorithm - A summary of the steps involved in the R Adam technique.*
 
 ## Training CIFAR-10 with R-Adam vs Adam
 I trained a CIFAR-10 from scratch to look for the change in performance. The network is a 3 layer CNN with Relu as activations. I use the below optimizer setting. 
@@ -129,29 +113,13 @@ def define_model(opt = opt):
 
 As we see, the training progress with R-Adam is a lot stable as compared to Adam. 
 
-<figure>
-  <img
-    src="/src/assets/blog_resources/rectified-adam_files/adam.png"
-    alt="radam"
-  />
-    <figcaption class="text-center">
-    Figure 3: Training with Adam Algorithm
-  </figcaption>
-
-</figure>
+![Figure 3: Adam Algorithm](/src/assets/blog_resources/rectified-adam_files/adam.png)  
+*Figure 3: Training with Adam Algorithm.*
 
 We however see a a lower accuracy with R-Adam as compared to Adam, with all other parameter setting remaining constant. 
 
-<figure>
-  <img
-    src="/src/assets/blog_resources/rectified-adam_files/radam.png"
-    alt="radam"
-  />
-    <figcaption class="text-center">
-    Figure 4: Training with RAdam Algorithm
-  </figcaption>
-
-</figure>
+![Figure 4: Adam Algorithm](/src/assets/blog_resources/rectified-adam_files/radam.png)  
+*Figure 4: Training with R-Adam Algorithm.*
 
 
 Project code are [here](https://github.com/Venkat-Rajgopal/Blog-post-codes/tree/master/). 
