@@ -110,7 +110,7 @@ These can be studied as a family of three algorithms which are simple modificati
 <p><strong>First:</strong> Add momentum to RMSprop, which means adding momentum to rescaled gradients. It does this by computing the moments. The algorithm calculates an exponential moving average of the gradient and the squared gradient. The two parameters <em>rho1</em> and <em>rho2</em> control the <em>decay rates</em> of these moving averages.</p>
 <p><strong>Second:</strong> It was observed that the moment estimnates are biased towards 0, especially when the decay rates are small (or close to 1). These biases are corrected by computing the first and second moment estimates.</p>
 <p>The algorithm is summarised below.</p>
-<p><img src="/@assets/blog_resources/rectified-adam_files/adam_algo.png" alt="Figure 1: Adam Algorithm"><br>
+<p><img alt="Figure 1: Adam Algorithm" sizes="(min-width: 1780px) 1780px, 100vw" loading="lazy" decoding="async" fetchpriority="auto" style="--w: 1780; --h: 1174;" data-astro-image="responsive" width="1780" height="1174" src="/_astro/adam_algo.D7UsJ4UE_2pbQwU.webp" srcset="/_astro/adam_algo.D7UsJ4UE_Z1drDEd.webp 640w, /_astro/adam_algo.D7UsJ4UE_2sC09C.webp 750w, /_astro/adam_algo.D7UsJ4UE_ZUQc0Q.webp 828w, /_astro/adam_algo.D7UsJ4UE_2sGg9j.webp 1080w, /_astro/adam_algo.D7UsJ4UE_1Elyus.webp 1280w, /_astro/adam_algo.D7UsJ4UE_Z15DGle.webp 1668w, /_astro/adam_algo.D7UsJ4UE_2pbQwU.webp 1780w"><br>
 <em>Figure 1: Adam Algorithm - A summary of the steps involved in the Adam optimization technique.</em></p>
 <h2 id="r-adam">R-Adam</h2>
 <p>Adaptive learning has so far been very successful in benchmark datasets like CIFAR-10. However it comes with the pitfall of <em>larger variance</em> in the early stage of training.
@@ -122,7 +122,7 @@ The authors of R-Adam suggests a <strong>warmup heuristic</strong> to tackle tis
 <li>During training, look for stabilization in variance, and increase learning rate and update paremeters using adaptive momentum.</li>
 </ul>
 <p>Below is the changes to Adam known as R-Adam.</p>
-<p><img src="/@assets/blog_resources/rectified-adam_files/radam_algo.png" alt="Figure 2: Adam Algorithm"><br>
+<p><img alt="Figure 2: Adam Algorithm" sizes="(min-width: 1722px) 1722px, 100vw" loading="lazy" decoding="async" fetchpriority="auto" style="--w: 1722; --h: 1038;" data-astro-image="responsive" width="1722" height="1038" src="/_astro/radam_algo.Cm5iplBT_21hvKs.webp" srcset="/_astro/radam_algo.Cm5iplBT_Z1Oldor.webp 640w, /_astro/radam_algo.Cm5iplBT_ZleATC.webp 750w, /_astro/radam_algo.Cm5iplBT_2k4036.webp 828w, /_astro/radam_algo.Cm5iplBT_273wW4.webp 1080w, /_astro/radam_algo.Cm5iplBT_2fmeTo.webp 1280w, /_astro/radam_algo.Cm5iplBT_1rMmaW.webp 1668w, /_astro/radam_algo.Cm5iplBT_21hvKs.webp 1722w"><br>
 <em>Figure 2: R Adam Algorithm - A summary of the steps involved in the R Adam technique.</em></p>
 <h2 id="training-cifar-10-with-r-adam-vs-adam">Training CIFAR-10 with R-Adam vs Adam</h2>
 <p>I trained a CIFAR-10 from scratch to look for the change in performance. The network is a 3 layer CNN with Relu as activations. I use the below optimizer setting.</p>
@@ -157,10 +157,10 @@ The authors of R-Adam suggests a <strong>warmup heuristic</strong> to tackle tis
 <span class="line"><span style="color:#D32F2F;font-style:inherit;--shiki-dark:#C792EA;--shiki-dark-font-style:italic">	return</span><span style="color:#24292EFF;--shiki-dark:#D6DEEB"> model</span></span></code></pre>
 <h2 id="results">Results</h2>
 <p>As we see, the training progress with R-Adam is a lot stable as compared to Adam.</p>
-<p><img src="/src/assets/blog_resources/rectified-adam_files/adam.png" alt="Figure 3: Adam Algorithm"><br>
+<p><img alt="Figure 3: Adam Algorithm" sizes="(min-width: 800px) 800px, 100vw" loading="lazy" decoding="async" fetchpriority="auto" style="--w: 800; --h: 550;" data-astro-image="responsive" width="800" height="550" src="/_astro/adam.Dg0M1Kg2_1TABF6.webp" srcset="/_astro/adam.Dg0M1Kg2_Z21ksaV.webp 640w, /_astro/adam.Dg0M1Kg2_ZS04ku.webp 750w, /_astro/adam.Dg0M1Kg2_1TABF6.webp 800w"><br>
 <em>Figure 3: Training with Adam Algorithm.</em></p>
 <p>We however see a a lower accuracy with R-Adam as compared to Adam, with all other parameter setting remaining constant.</p>
-<p><img src="/src/assets/blog_resources/rectified-adam_files/radam.png" alt="Figure 4: Adam Algorithm"><br>
+<p><img alt="Figure 4: Adam Algorithm" sizes="(min-width: 800px) 800px, 100vw" loading="lazy" decoding="async" fetchpriority="auto" style="--w: 800; --h: 550;" data-astro-image="responsive" width="800" height="550" src="/_astro/radam.fJmEIn7m_QbrBf.webp" srcset="/_astro/radam.fJmEIn7m_Z14BMhx.webp 640w, /_astro/radam.fJmEIn7m_1BJmnG.webp 750w, /_astro/radam.fJmEIn7m_QbrBf.webp 800w"><br>
 <em>Figure 4: Training with R-Adam Algorithm.</em></p>
 <p>Project code are <a href="https://github.com/Venkat-Rajgopal/Blog-post-codes/tree/master/">here</a>.</p>
 <hr>
