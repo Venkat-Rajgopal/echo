@@ -50,7 +50,8 @@ Recall that,
 
 The algorithm is summarised below. 
 
-![Figure 1: Adam Algorithm](/@assets/blog_resources/rectified-adam_files/adam_algo.png)  
+
+![Figure 1: Adam Algorithm](@/assets/blog_resources/rectified-adam_files/adam_algo.png)  
 *Figure 1: Adam Algorithm - A summary of the steps involved in the Adam optimization technique.*
 
 
@@ -66,7 +67,7 @@ The authors suggest the following to rectify this.
 
 Below is the changes to Adam known as R-Adam. 
 
-![Figure 2: Adam Algorithm](/@assets/blog_resources/rectified-adam_files/radam_algo.png)  
+![Figure 2: Adam Algorithm](@/assets/blog_resources/rectified-adam_files/radam_algo.png)  
 *Figure 2: R Adam Algorithm - A summary of the steps involved in the R Adam technique.*
 
 ## Training CIFAR-10 with R-Adam vs Adam
@@ -113,12 +114,12 @@ def define_model(opt = opt):
 
 As we see, the training progress with R-Adam is a lot stable as compared to Adam. 
 
-![Figure 3: Adam Algorithm](/src/assets/blog_resources/rectified-adam_files/adam.png)  
+![Figure 3: Adam Algorithm](@/assets/blog_resources/rectified-adam_files/adam.png)  
 *Figure 3: Training with Adam Algorithm.*
 
 We however see a a lower accuracy with R-Adam as compared to Adam, with all other parameter setting remaining constant. 
 
-![Figure 4: Adam Algorithm](/src/assets/blog_resources/rectified-adam_files/radam.png)  
+![Figure 4: Adam Algorithm](@/assets/blog_resources/rectified-adam_files/radam.png)  
 *Figure 4: Training with R-Adam Algorithm.*
 
 
